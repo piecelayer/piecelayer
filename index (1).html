@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIECE LAYER — K-CORE SELECT SHOP</title>
+<meta name="description" content="Piece Layer aims to be the global select shop for Korean culture. Seongsu-dong, Seoul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper:   #F6F6E6;
+  --meock:   #212121;
+  --jade:    #96DDB8;
+  --door:    #E03253;
+  --p01: #C6C5B9;
+  --p02: #97968C;
+  --p03: #676761;
+  --bg:  #EFEFE0;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--meock);
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  font-weight: 400; line-height: 1.6;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 300;
+  background: var(--meock);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 56px;
+}
+.nav-logo { font-size: 1rem; font-weight: 700; letter-spacing: 0.18em; color: var(--paper); text-decoration: none; text-transform: uppercase; }
+.nav-logo .dot { color: var(--jade); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--p01); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+.nav-links a:hover { color: var(--jade); }
+.cbadge { display: inline-flex; align-items: center; justify-content: center; background: var(--door); color: var(--paper); width: 18px; height: 18px; border-radius: 50%; font-size: 0.6rem; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+
+/* HERO */
+.hero { background: var(--paper); min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.hero-left { padding: 5rem 3rem 5rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 2px solid var(--meock); }
+.hero-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--p02); display: flex; align-items: center; gap: 0.8rem; }
+.hero-tag::before { content: ''; width: 28px; height: 2px; background: var(--jade); display: block; }
+.hero-title { font-size: clamp(3.5rem, 7vw, 6.5rem); font-weight: 700; line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase; margin: 2rem 0; }
+.hero-title .red { color: var(--door); display: block; }
+.hero-desc { font-size: 0.9rem; color: var(--p03); line-height: 1.85; max-width: 380px; margin-bottom: 3rem; }
+.hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.btn-fill { padding: 0.85rem 2.2rem; background: var(--meock); color: var(--paper); font-family: inherit; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: 2px solid var(--meock); cursor: pointer; transition: all 0.18s; text-decoration: none; display: inline-block; }
+.btn-fill:hover { background: var(--door); border-color: var(--door); }
+.btn-ghost { padding: 0.85rem 2.2rem; background: transparent; color: var(--meock); font-family: inherit; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: 2px solid var(--meock); cursor: pointer; transition: all 0.18s; }
+.btn-ghost:hover { background: var(--meock); color: var(--paper); }
+.hero-right { background: var(--meock); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 3rem; }
+.hero-bg { font-size: 11rem; line-height: 1; color: rgba(246,246,230,0.055); font-weight: 700; text-transform: uppercase; letter-spacing: -0.05em; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; user-select: none; }
+.hero-center { position: relative; z-index: 2; text-align: center; }
+.hero-big { font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 700; color: var(--paper); letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; display: block; }
+.hero-big.jade { color: var(--jade); }
+.hero-big.door { color: var(--door); }
+.hero-sub { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--p01); margin-top: 1.5rem; line-height: 1.9; }
+.ems-pill { position: absolute; bottom: 2.5rem; right: 2.5rem; background: var(--jade); color: var(--meock); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.5rem 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+.ems-pill::before { content: ''; width: 6px; height: 6px; background: var(--meock); border-radius: 50%; }
+
+/* MARQUEE */
+.mq { background: var(--door); overflow: hidden; padding: 0.75rem 0; border-top: 2px solid var(--meock); border-bottom: 2px solid var(--meock); }
+.mq-track { display: flex; animation: mq 24s linear infinite; white-space: nowrap; }
+.mq-item { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--paper); padding: 0 2rem; flex-shrink: 0; }
+.mq-sep { color: rgba(246,246,230,0.45); }
+@keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SECTION */
+.sec { max-width: 1280px; margin: 0 auto; padding: 5rem 2.5rem; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 2px solid var(--meock); padding-bottom: 1rem; margin-bottom: 3.5rem; }
+.sec-title { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1; }
+.sec-title .ac { color: var(--door); }
+.sec-en { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p02); }
+
+/* PRODUCTS */
+.pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.pcard { border: 1px solid var(--meock); margin: -1px 0 0 -1px; cursor: pointer; transition: background 0.18s; display: flex; flex-direction: column; }
+.pcard:hover { background: var(--bg); }
+.pcard:hover .pthumb { border-bottom-color: var(--door); }
+.pthumb { aspect-ratio: 1/1; background: var(--bg); display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--meock); position: relative; overflow: hidden; transition: border-color 0.18s; }
+.pchar { font-size: 5rem; font-weight: 700; color: rgba(33,33,33,0.07); line-height: 1; user-select: none; text-transform: uppercase; }
+.ptag { position: absolute; top: 1rem; left: 1rem; background: var(--meock); color: var(--jade); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.25rem 0.65rem; }
+.pbody { padding: 1.2rem 1.4rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+.pcat { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p02); margin-bottom: 0.3rem; }
+.pname { font-size: 1rem; font-weight: 500; line-height: 1.35; margin-bottom: 0.4rem; }
+.pw { font-size: 0.72rem; color: var(--p02); margin-bottom: 0.7rem; }
+.ppricerow { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem; }
+.pkrw { font-size: 1.1rem; font-weight: 700; }
+.pusd { font-size: 0.82rem; color: var(--p02); }
+.padd { margin-top: auto; width: 100%; padding: 0.7rem; background: var(--paper); color: var(--meock); border: 2px solid var(--meock); font-family: inherit; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.18s; }
+.padd:hover { background: var(--meock); color: var(--jade); }
+
+/* ABOUT */
+.about-wrap { background: var(--meock); border-top: 2px solid var(--meock); border-bottom: 2px solid var(--meock); }
+.about-in { max-width: 1280px; margin: 0 auto; padding: 5rem 2.5rem; display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: center; }
+.about-num { font-size: 6rem; font-weight: 700; color: var(--jade); line-height: 1; letter-spacing: -0.03em; }
+.about-num-l { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p01); margin-top: 0.5rem; }
+.about-div { width: 40px; height: 3px; background: var(--door); margin: 2rem 0; }
+.about-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--jade); margin-bottom: 1.2rem; }
+.about-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--paper); line-height: 1.2; text-transform: uppercase; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+.about-title .red { color: var(--door); }
+.about-body { font-size: 0.92rem; color: var(--p01); line-height: 1.9; }
+
+/* HOW */
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.how-step { padding: 2.5rem 2rem; border: 1px solid var(--meock); margin: -1px 0 0 -1px; }
+.how-num { font-size: 3rem; font-weight: 700; color: var(--p01); line-height: 1; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+.how-title { font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.how-desc { font-size: 0.8rem; color: var(--p03); line-height: 1.7; }
+
+/* SHIPPING */
+.ship-bg { background: var(--bg); border-bottom: 2px solid var(--meock); }
+.ship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
+.frow { margin-bottom: 1.3rem; }
+.frow label { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p02); margin-bottom: 0.45rem; }
+.frow select, .frow input { width: 100%; padding: 0.8rem 1rem; background: var(--paper); border: 2px solid var(--meock); font-family: inherit; font-size: 0.95rem; color: var(--meock); outline: none; appearance: none; transition: border-color 0.18s; }
+.frow select:focus, .frow input:focus { border-color: var(--door); }
+.sw { position: relative; }
+.sw::after { content: '▾'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.zone-tag { display: inline-block; margin-bottom: 1.3rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; background: var(--jade); color: var(--meock); padding: 0.35rem 0.9rem; }
+.rbox { border: 2px solid var(--meock); background: var(--paper); opacity: 0; transform: translateY(6px); transition: opacity 0.3s, transform 0.3s; pointer-events: none; }
+.rbox.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+.rlabel { background: var(--meock); color: var(--jade); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.75rem 1.2rem; }
+.rrow { display: flex; justify-content: space-between; align-items: baseline; padding: 0.7rem 1.2rem; border-bottom: 1px dashed var(--p01); }
+.rrow:last-of-type { border-bottom: none; }
+.rrow .rl { font-size: 0.72rem; color: var(--p02); }
+.rrow .rv { font-size: 0.9rem; font-weight: 500; }
+.rtotal { background: var(--door); display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.2rem; }
+.rtotal .rl { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,246,230,0.75); }
+.rtotal .rv { font-size: 1.6rem; font-weight: 700; color: var(--paper); }
+.rnote { padding: 0.9rem 1.2rem; font-size: 0.72rem; color: var(--p02); line-height: 1.7; border-top: 1px solid var(--p01); }
+
+/* CART */
+.cart-bg { background: var(--bg); border-top: 2px solid var(--meock); border-bottom: 2px solid var(--meock); }
+.cart-box { border: 2px solid var(--meock); }
+.cart-empty { padding: 4rem; text-align: center; font-size: 0.9rem; color: var(--p02); text-transform: uppercase; letter-spacing: 0.1em; }
+.citem { display: flex; align-items: center; gap: 1.5rem; padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--p01); }
+.citem:last-of-type { border-bottom: none; }
+.csym { width: 56px; height: 56px; background: var(--paper); border: 2px solid var(--meock); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: rgba(33,33,33,0.18); text-transform: uppercase; }
+.cinfo { flex: 1; }
+.cname { font-size: 0.95rem; font-weight: 500; }
+.cmeta { font-size: 0.72rem; color: var(--p02); margin-top: 0.15rem; }
+.qrow { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem; }
+.qb { width: 24px; height: 24px; border: 2px solid var(--meock); background: none; cursor: pointer; font-size: 0.85rem; font-family: inherit; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.qb:hover { background: var(--meock); color: var(--jade); }
+.qn { font-size: 0.9rem; min-width: 22px; text-align: center; font-weight: 500; }
+.cprice { font-size: 1rem; font-weight: 700; white-space: nowrap; }
+.crm { background: none; border: none; cursor: pointer; font-size: 0.9rem; color: var(--p01); transition: color 0.15s; padding: 4px; font-family: inherit; }
+.crm:hover { color: var(--door); }
+.cfoot { background: var(--meock); display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+.ctl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--p01); }
+.ctv { font-size: 1.8rem; font-weight: 700; color: var(--paper); margin-top: 0.1rem; }
+
+/* FOOTER */
+footer { background: var(--bg); border-top: 2px solid var(--meock); padding: 4rem 2.5rem 3rem; }
+.footer-in { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+.flogo { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.flogo .dot { color: var(--door); }
+.fmission { font-size: 0.82rem; color: var(--p02); line-height: 1.85; max-width: 280px; }
+.fctitle { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem; color: var(--p03); }
+.fc ul { list-style: none; }
+.fc ul li { font-size: 0.82rem; margin-bottom: 0.5rem; }
+.fc ul li a { color: var(--p03); text-decoration: none; transition: color 0.18s; }
+.fc ul li a:hover { color: var(--door); }
+.fbot { max-width: 1280px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--p01); display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem; color: var(--p02); flex-wrap: wrap; gap: 0.5rem; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(16px); background: var(--jade); color: var(--meock); padding: 0.75rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0; transition: all 0.25s; pointer-events: none; z-index: 9999; white-space: nowrap; border: 2px solid var(--meock); }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { min-height: 40vh; }
+  .hero-bg { font-size: 6rem; }
+  .pgrid { grid-template-columns: repeat(2, 1fr); }
+  .about-in { grid-template-columns: 1fr; gap: 2.5rem; }
+  .ship-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .how-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-in { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .pgrid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 3rem; }
+  nav { padding: 0 1.2rem; }
+  .nav-links { gap: 1rem; }
+  .sec { padding: 3.5rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">PIECE<span class="dot">.</span>LAYER</a>
+  <ul class="nav-links">
+    <li><a onclick="goTo('products')">Shop</a></li>
+    <li><a onclick="goTo('shipping')">Shipping</a></li>
+    <li><a onclick="goTo('cart')">Cart <span class="cbadge" id="cart-count">0</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-tag">Seoul, Korea · 성수동</div>
+      <h1 class="hero-title">K-CORE<span class="red">SELECT</span>SHOP.</h1>
+      <p class="hero-desc">Piece Layer aims to be the global select shop for Korean culture. Every piece is handpicked from the heart of Seongsu-dong and shipped worldwide via Korea Post EMS.</p>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-fill" onclick="goTo('products')">Shop Now</button>
+      <button class="btn-ghost" onclick="goTo('shipping')">Shipping Info</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg">TOBY</div>
+    <div class="hero-center">
+      <span class="hero-big">PIECE</span>
+      <span class="hero-big jade">LAYER</span>
+      <span class="hero-big door">★</span>
+      <div class="hero-sub">세상을 널리 흥나게<br>ENERGIZE EVERYWHERE WITH HNG</div>
+    </div>
+    <div class="ems-pill">Korea Post EMS · Worldwide</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item">K-CORE SELECT SHOP <span class="mq-sep">✦</span></span>
+    <span class="mq-item">SEONGSU-DONG, SEOUL <span class="mq-sep">✦</span></span>
+    <span class="mq-item">WORLDWIDE EMS SHIPPING <span class="mq-sep">✦</span></span>
+    <span class="mq-item">HANDPICKED IN KOREA <span class="mq-sep">✦</span></span>
+    <span class="mq-item">WWW.PIECELAYER.COM <span class="mq-sep">✦</span></span>
+    <span class="mq-item">K-CORE SELECT SHOP <span class="mq-sep">✦</span></span>
+    <span class="mq-item">SEONGSU-DONG, SEOUL <span class="mq-sep">✦</span></span>
+    <span class="mq-item">WORLDWIDE EMS SHIPPING <span class="mq-sep">✦</span></span>
+    <span class="mq-item">HANDPICKED IN KOREA <span class="mq-sep">✦</span></span>
+    <span class="mq-item">WWW.PIECELAYER.COM <span class="mq-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products">
+<section class="sec">
+  <div class="sec-head">
+    <h2 class="sec-title">NEW <span class="ac">ARRIVALS</span></h2>
+    <span class="sec-en">Handpicked · Made in Korea</span>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+</section>
+</div>
+
+<!-- ABOUT -->
+<div class="about-wrap">
+  <div class="about-in">
+    <div>
+      <div class="about-num">흥</div>
+      <div class="about-num-l">HNG · Energize Everywhere</div>
+      <div class="about-div"></div>
+      <div class="about-num" style="font-size:3.5rem;">성수</div>
+      <div class="about-num-l">서울 성동구 뚝섬로 415, 2F</div>
+    </div>
+    <div>
+      <div class="about-tag">Our Mission</div>
+      <h2 class="about-title">THE GLOBAL<br>SELECT SHOP<br>FOR <span class="red">KOREAN</span><br>CULTURE.</h2>
+      <p class="about-body">Piece Layer started in the corner of Seongsu-dong, inspired by the spirit of 흥익인간 — to energize the world widely. Like the red iron door of Geulsaem Academy that stood for 40 years, we want to be a space people remember for a long time. Every item carries the spontaneous energy of Korean craft: invested, joyful, and alive.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW -->
+<div style="border-bottom:2px solid var(--meock);">
+<section class="sec" style="padding-bottom:0;">
+  <div class="sec-head">
+    <h2 class="sec-title">HOW TO <span class="ac">ORDER</span></h2>
+    <span class="sec-en">Simple · Worldwide</span>
+  </div>
+</section>
+<div class="how-grid" style="max-width:1280px;margin:0 auto;padding:0 2.5rem 5rem;">
+  <div class="how-step"><div class="how-num">01</div><div class="how-title">Browse & Add</div><div class="how-desc">Choose items and add them to your cart. Each product shows weight for shipping calculation.</div></div>
+  <div class="how-step"><div class="how-num">02</div><div class="how-title">Check Shipping</div><div class="how-desc">Use our EMS calculator — select your country and the fee is auto-calculated from your cart weight.</div></div>
+  <div class="how-step"><div class="how-num">03</div><div class="how-title">DM or Email</div><div class="how-desc">Send your order via Instagram DM @piecelayer or email. We confirm availability within 24hrs.</div></div>
+  <div class="how-step"><div class="how-num">04</div><div class="how-title">Pay & Receive</div><div class="how-desc">PayPal or Wise. Ships within 2 business days from Seoul with full EMS tracking number.</div></div>
+</div>
+</div>
+
+<!-- SHIPPING CALCULATOR -->
+<div class="ship-bg" id="shipping">
+<section class="sec">
+  <div class="sec-head">
+    <h2 class="sec-title">SHIPPING <span class="ac">CALC</span></h2>
+    <span class="sec-en">우체국 EMS 기준 · 포장비 ₩4,000 포함</span>
+  </div>
+  <div class="ship-grid">
+    <div>
+      <div class="frow">
+        <label>Destination Country</label>
+        <div class="sw">
+          <select id="dest" onchange="updateZone()">
+            <option value="">— Select Country —</option>
+            <option value="US|1">United States</option>
+            <option value="CA|1">Canada</option>
+            <option value="GB|1">United Kingdom</option>
+            <option value="AU|1">Australia</option>
+            <option value="NZ|1">New Zealand</option>
+            <option value="JP|2">Japan</option>
+            <option value="CN|2">China</option>
+            <option value="TW|2">Taiwan</option>
+            <option value="HK|2">Hong Kong</option>
+            <option value="SG|2">Singapore</option>
+            <option value="TH|2">Thailand</option>
+            <option value="VN|2">Vietnam</option>
+            <option value="PH|2">Philippines</option>
+            <option value="MY|2">Malaysia</option>
+            <option value="ID|2">Indonesia</option>
+            <option value="IN|3">India</option>
+            <option value="DE|3">Germany</option>
+            <option value="FR|3">France</option>
+            <option value="IT|3">Italy</option>
+            <option value="ES|3">Spain</option>
+            <option value="NL|3">Netherlands</option>
+            <option value="BE|3">Belgium</option>
+            <option value="CH|3">Switzerland</option>
+            <option value="SE|3">Sweden</option>
+            <option value="NO|3">Norway</option>
+            <option value="DK|3">Denmark</option>
+            <option value="FI|3">Finland</option>
+            <option value="PL|3">Poland</option>
+            <option value="PT|3">Portugal</option>
+            <option value="AT|3">Austria</option>
+            <option value="MX|4">Mexico</option>
+            <option value="BR|4">Brazil</option>
+            <option value="AR|4">Argentina</option>
+            <option value="CL|4">Chile</option>
+            <option value="ZA|4">South Africa</option>
+            <option value="EG|4">Egypt</option>
+            <option value="NG|4">Nigeria</option>
+            <option value="AE|4">UAE</option>
+            <option value="SA|4">Saudi Arabia</option>
+            <option value="TR|4">Turkey</option>
+            <option value="RU|4">Russia</option>
+          </select>
+        </div>
+      </div>
+      <div id="ztag-wrap" style="display:none;"><span class="zone-tag" id="ztag"></span></div>
+      <div class="frow">
+        <label>Parcel Weight (grams) — auto-filled from cart</label>
+        <input type="number" id="wt" placeholder="e.g. 500" min="1" max="30000">
+      </div>
+      <button class="btn-fill" style="width:100%;" onclick="calcShip()">Calculate Shipping Fee</button>
+      <p style="font-size:0.72rem;color:var(--p02);margin-top:0.75rem;line-height:1.7;">
+        ※ EMS 요금 + 기본 포장비 ₩4,000 합산 계산<br>
+        EMS rate + ₩4,000 packaging fee included in total.
+      </p>
+    </div>
+    <div>
+      <div class="rbox" id="rbox">
+        <div class="rlabel">Shipping Estimate</div>
+        <div class="rrow"><span class="rl">Destination</span><span class="rv" id="r-ctry">—</span></div>
+        <div class="rrow"><span class="rl">Parcel Weight</span><span class="rv" id="r-wt">—</span></div>
+        <div class="rrow"><span class="rl">EMS Zone</span><span class="rv" id="r-zone">—</span></div>
+        <div class="rrow"><span class="rl">Est. Delivery</span><span class="rv" id="r-days">—</span></div>
+        <div class="rrow"><span class="rl">EMS Rate</span><span class="rv" id="r-ems">—</span></div>
+        <div class="rrow"><span class="rl">Packaging Fee</span><span class="rv">₩4,000</span></div>
+        <div class="rtotal"><span class="rl">Total Shipping</span><span class="rv" id="r-tot">—</span></div>
+        <div class="rnote" id="r-note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CART -->
+<div class="cart-bg">
+<section class="sec" id="cart">
+  <div class="sec-head">
+    <h2 class="sec-title">YOUR <span class="ac">CART</span></h2>
+    <span class="sec-en" id="cart-sub">0 items</span>
+  </div>
+  <div class="cart-box" id="cart-box">
+    <div class="cart-empty">Your cart is empty — explore the collection above.</div>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div>
+      <div class="flogo">PIECE<span class="dot">.</span>LAYER</div>
+      <p class="fmission">세상을 널리 흥나게,<br>Energize Everywhere with HNG.<br><br>서울 성동구 뚝섬로 415, 2F<br>Seongsu-dong, Seoul, Korea.</p>
+    </div>
+    <div class="fc">
+      <div class="fctitle">Contact</div>
+      <ul>
+        <li><a href="https://instagram.com/piecelayer" target="_blank">@piecelayer</a></li>
+        <li><a href="mailto:hello@piecelayer.com">hello@piecelayer.com</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <div class="fctitle">Info</div>
+      <ul>
+        <li><a onclick="goTo('shipping')" style="cursor:pointer;">EMS Shipping Policy</a></li>
+        <li><a onclick="goTo('products')" style="cursor:pointer;">Shop All</a></li>
+        <li><a href="https://www.instagram.com/piecelayer" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Piece Layer. All Rights Reserved.</span>
+    <span>본 자료와 토비 IP는 피스레이어의 지적 재산입니다.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const USD = 1350, PKG = 4000;
+
+/* ── PRODUCT DATA — 여기서 상품 수정하세요 ── */
+const PRODUCTS = [
+  { id:1, sym:'A', cat:'Accessory',  name:'Hanji Fan 한지 부채',          krw:18000, weightG:120, desc:'Hand-crafted mulberry paper fan' },
+  { id:2, sym:'B', cat:'Ceramics',   name:'Mini Celadon Vase 청자 미니',   krw:32000, weightG:280, desc:'Celadon glazed porcelain' },
+  { id:3, sym:'C', cat:'Wellness',   name:'Hanji Fragrance Sachet 향낭',   krw:12000, weightG:80,  desc:'Traditional paper-wrapped scent' },
+  { id:4, sym:'D', cat:'Stationery', name:'Munjado Postcard Set 문자도',   krw:8000,  weightG:60,  desc:'Set of 6 illustrated postcards' },
+  { id:5, sym:'E', cat:'Textile',    name:'Pojagi Wrap Cloth 보자기',       krw:24000, weightG:200, desc:'Traditional patchwork wrapping cloth' },
+  { id:6, sym:'F', cat:'Tea & Food', name:'Korean Tea Trio Gift Set 차 세트', krw:28000, weightG:350, desc:'Three varieties of Korean tea' },
+];
+
+/* ── EMS RATE TABLE ── */
+const EMS = {
+  1:{ name:'Zone 1 · Americas & Oceania', days:'5–7 business days',
+    r:[[300,22000],[500,25000],[750,28000],[1000,32000],[1500,38000],[2000,44000],[2500,50000],[3000,56000],[4000,64000],[5000,72000],[7000,85000],[10000,102000],[15000,130000],[20000,158000],[30000,205000]] },
+  2:{ name:'Zone 2 · Asia Pacific', days:'3–5 business days',
+    r:[[300,11000],[500,13000],[750,15000],[1000,17000],[1500,20000],[2000,23000],[2500,26000],[3000,29000],[4000,33000],[5000,38000],[7000,46000],[10000,57000],[15000,73000],[20000,90000],[30000,118000]] },
+  3:{ name:'Zone 3 · Europe & India', days:'6–9 business days',
+    r:[[300,19000],[500,22000],[750,25000],[1000,28000],[1500,33000],[2000,38000],[2500,43000],[3000,48000],[4000,56000],[5000,64000],[7000,78000],[10000,97000],[15000,124000],[20000,152000],[30000,196000]] },
+  4:{ name:'Zone 4 · Middle East, Africa & Others', days:'7–12 business days',
+    r:[[300,21000],[500,24000],[750,27000],[1000,30000],[1500,36000],[2000,42000],[2500,48000],[3000,54000],[4000,62000],[5000,70000],[7000,83000],[10000,100000],[15000,128000],[20000,155000],[30000,200000]] },
+};
+
+function emsFee(zone, g) {
+  for (const [max, fee] of EMS[zone].r) { if (g <= max) return fee; }
+  return EMS[zone].r.at(-1)[1];
+}
+
+const cart = {};
+
+function renderProducts() {
+  document.getElementById('pgrid').innerHTML = PRODUCTS.map(p => `
+    <div class="pcard">
+      <div class="pthumb">
+        <span class="pchar">${p.sym}</span>
+        <span class="ptag">${p.cat}</span>
+      </div>
+      <div class="pbody">
+        <div class="pcat">${p.cat}</div>
+        <div class="pname">${p.name}</div>
+        <div class="pw">무게 Weight: <strong>${p.weightG}g</strong> · ${p.desc}</div>
+        <div class="ppricerow">
+          <span class="pkrw">₩${p.krw.toLocaleString()}</span>
+          <span class="pusd">~$${Math.round(p.krw/USD)}</span>
+        </div>
+        <button class="padd" onclick="addCart(${p.id})">Add to Cart +</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function addCart(id) { cart[id]=(cart[id]||0)+1; renderCart(); autoWeight(); toast('Added!'); }
+function chgQty(id,d) { cart[id]=(cart[id]||0)+d; if(cart[id]<=0) delete cart[id]; renderCart(); autoWeight(); }
+function rmCart(id) { delete cart[id]; renderCart(); autoWeight(); }
+
+function autoWeight() {
+  const w = Object.keys(cart).reduce((s,k)=>s+PRODUCTS.find(p=>p.id==k).weightG*cart[k],0);
+  document.getElementById('wt').value = w > 0 ? w : '';
+}
+
+function renderCart() {
+  const keys = Object.keys(cart).filter(k=>cart[k]>0);
+  const qty = keys.reduce((s,k)=>s+cart[k],0);
+  document.getElementById('cart-count').textContent = qty;
+  document.getElementById('cart-sub').textContent = qty+(qty===1?' item':' items');
+  const box = document.getElementById('cart-box');
+  if (!keys.length) { box.innerHTML='<div class="cart-empty">Your cart is empty — explore the collection above.</div>'; return; }
+  let sub=0, tw=0;
+  const rows = keys.map(k=>{
+    const p=PRODUCTS.find(x=>x.id==k); const s=p.krw*cart[k];
+    sub+=s; tw+=p.weightG*cart[k];
+    return `<div class="citem">
+      <div class="csym">${p.sym}</div>
+      <div class="cinfo">
+        <div class="cname">${p.name}</div>
+        <div class="cmeta">${p.weightG}g × ${cart[k]} = ${p.weightG*cart[k]}g</div>
+        <div class="qrow">
+          <button class="qb" onclick="chgQty(${k},-1)">−</button>
+          <span class="qn">${cart[k]}</span>
+          <button class="qb" onclick="chgQty(${k},1)">+</button>
+        </div>
+      </div>
+      <div class="cprice">₩${s.toLocaleString()}</div>
+      <button class="crm" onclick="rmCart(${k})">✕</button>
+    </div>`;
+  }).join('');
+  box.innerHTML = rows + `
+    <div class="cfoot">
+      <div>
+        <div class="ctl">Subtotal · Total Weight: ${tw}g</div>
+        <div class="ctv">₩${sub.toLocaleString()} <span style="font-size:1rem;color:var(--p01);">~$${Math.round(sub/USD)}</span></div>
+      </div>
+      <button class="btn-fill" onclick="proceedOrder()">Proceed to Order →</button>
+    </div>`;
+}
+
+let curZone=null, curCtry='';
+
+function updateZone() {
+  const sel=document.getElementById('dest'), val=sel.value;
+  const wrap=document.getElementById('ztag-wrap');
+  if(!val){wrap.style.display='none';curZone=null;return;}
+  const [,z]=val.split('|');
+  curZone=parseInt(z); curCtry=sel.options[sel.selectedIndex].text;
+  document.getElementById('ztag').textContent=EMS[curZone].name;
+  wrap.style.display='block';
+}
+
+function calcShip() {
+  if(!curZone){alert('Please select a destination country.');return;}
+  const w=parseInt(document.getElementById('wt').value);
+  if(!w||w<1){alert('Please enter a valid weight in grams.');return;}
+  if(w>30000){alert('EMS max is 30kg. Please contact us.');return;}
+  const ems=emsFee(curZone,w), total=ems+PKG, z=EMS[curZone];
+  document.getElementById('r-ctry').textContent=curCtry;
+  document.getElementById('r-wt').textContent=w>=1000?(w/1000).toFixed(2)+'kg':w+'g';
+  document.getElementById('r-zone').textContent='Zone '+curZone;
+  document.getElementById('r-days').textContent=z.days;
+  document.getElementById('r-ems').textContent='₩'+ems.toLocaleString()+' (~$'+Math.round(ems/USD)+')';
+  document.getElementById('r-tot').textContent='₩'+total.toLocaleString()+' (~$'+Math.round(total/USD)+')';
+  document.getElementById('r-note').textContent='※ 우체국 EMS 기준 요금 + 포장비 ₩4,000 합산. Korea Post EMS standard rate + ₩4,000 packaging fee. Customs/import duties at destination are buyer\'s responsibility. Tracking number included with all shipments.';
+  document.getElementById('rbox').classList.add('show');
+}
+
+function goTo(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+function proceedOrder() {
+  const keys=Object.keys(cart).filter(k=>cart[k]>0);
+  if(!keys.length)return;
+  let msg='Hi! I\'d like to order from Piece Layer:\n\n';
+  keys.forEach(k=>{const p=PRODUCTS.find(x=>x.id==k);msg+=`• ${p.name} × ${cart[k]} = ₩${(p.krw*cart[k]).toLocaleString()}\n`;});
+  const sub=keys.reduce((s,k)=>s+PRODUCTS.find(x=>x.id==k).krw*cart[k],0);
+  const tw=keys.reduce((s,k)=>s+PRODUCTS.find(x=>x.id==k).weightG*cart[k],0);
+  msg+=`\nSubtotal: ₩${sub.toLocaleString()}\nTotal Weight: ${tw}g\nShipping to: [your country]\nAddress: [your full address]`;
+  window.open('https://www.instagram.com/piecelayer','_blank');
+  try { navigator.clipboard.writeText(msg); } catch(e) {}
+  alert('Order summary copied!\n\nPlease send via Instagram DM @piecelayer\n\n'+msg);
+}
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
