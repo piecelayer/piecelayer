@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peace Layer — Korean Travel Gifts from Seoul</title>
+<meta name="description" content="Curated Korean travel gifts from Seongsu-dong, Seoul. Worldwide shipping via Korea Post EMS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1714;
+  --ink-light: #4a4540;
+  --paper: #f5f0e8;
+  --paper-dark: #ede8de;
+  --paper-mid: #e8e2d6;
+  --accent: #8B4513;
+  --accent-light: #c47a45;
+  --celadon: #7a9d90;
+  --celadon-light: #c2d5ce;
+  --gold: #b8963e;
+  --gold-light: #e8d4a0;
+  --border: #d4c9b0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 62px;
+}
+.nav-logo { font-size: 1.35rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); font-style: italic; }
+.nav-links { display: flex; gap: 2.2rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; list-style: none; }
+.nav-links a { color: var(--ink-light); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cart-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: var(--paper);
+  font-size: 0.6rem; font-weight: 500; width: 17px; height: 17px;
+  border-radius: 50%; margin-left: 5px; vertical-align: middle;
+  transition: transform 0.2s;
+}
+
+/* ── HERO ── */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 88vh; max-width: 1200px; margin: 0 auto;
+  padding: 0 2.5rem; gap: 5rem; align-items: center;
+}
+.hero-text { padding: 5rem 0; }
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--celadon);
+  margin-bottom: 2rem;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--celadon); }
+.hero-title {
+  font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.12;
+  letter-spacing: -0.015em; margin-bottom: 1.75rem;
+}
+.hero-title em { font-style: italic; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: var(--ink-light); line-height: 1.85; margin-bottom: 2.5rem; max-width: 400px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  padding: 0.9rem 2.8rem;
+  background: var(--ink); color: var(--paper);
+  font-family: inherit; font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border: none; cursor: pointer; transition: background 0.2s; text-decoration: none;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--accent); }
+.btn-outline {
+  padding: 0.9rem 2rem;
+  background: transparent; color: var(--ink);
+  font-family: inherit; font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-decoration: none;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--ink); }
+
+.hero-visual {
+  position: relative; aspect-ratio: 4/5;
+  background: var(--paper-dark);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg-char {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14rem; color: rgba(26,23,20,0.055); line-height: 1;
+  user-select: none; pointer-events: none;
+}
+.hero-tag-badge {
+  position: absolute; top: 2rem; left: 2rem;
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-light); border: 1px solid var(--border);
+  padding: 0.4rem 0.9rem; background: var(--paper);
+}
+.hero-ems-badge {
+  position: absolute; bottom: 2rem; right: 2rem;
+  background: var(--ink); color: var(--paper); padding: 1.1rem 1.6rem; text-align: center;
+}
+.hero-ems-badge .big { font-size: 2rem; display: block; line-height: 1; letter-spacing: 0.05em; }
+.hero-ems-badge .small { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); }
+.hero-celadon-bar {
+  position: absolute; left: 0; top: 30%; width: 4px; height: 40%;
+  background: var(--celadon);
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  background: var(--ink); overflow: hidden; padding: 0.9rem 0;
+  border-top: 1px solid #333; border-bottom: 1px solid #333;
+}
+.marquee-track {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+.marquee-item {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold-light); padding: 0 2.5rem; flex-shrink: 0;
+}
+.marquee-dot { color: var(--accent); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTION COMMONS ── */
+.section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; }
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 3.5rem; padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-title { font-size: 2rem; font-weight: 300; letter-spacing: 0.04em; }
+.section-title em { font-style: italic; color: var(--accent); }
+.section-sub { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); }
+
+/* ── PRODUCTS ── */
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; }
+
+.product-card { cursor: pointer; transition: transform 0.25s; }
+.product-card:hover { transform: translateY(-5px); }
+.product-card:hover .product-thumb { border-color: var(--accent); }
+
+.product-thumb {
+  aspect-ratio: 3/4; background: var(--paper-dark);
+  border: 1px solid var(--border); position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; transition: border-color 0.2s; margin-bottom: 1.1rem;
+}
+.product-thumb .han-char {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 5rem; color: rgba(26,23,20,0.1); user-select: none;
+}
+.product-thumb-tag {
+  position: absolute; bottom: 0.8rem; left: 0.8rem;
+  background: rgba(26,23,20,0.72); color: var(--paper);
+  font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.28rem 0.65rem;
+}
+.product-category { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--celadon); margin-bottom: 0.3rem; }
+.product-name { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.3rem; line-height: 1.4; }
+.product-price { font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.85rem; }
+.product-price strong { color: var(--accent); font-size: 1rem; font-weight: 500; }
+.add-btn {
+  width: 100%; padding: 0.65rem;
+  background: transparent; border: 1px solid var(--border);
+  font-family: inherit; font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+  color: var(--ink-light); transition: all 0.2s;
+}
+.add-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.add-btn.added { background: var(--celadon); color: var(--paper); border-color: var(--celadon); }
+
+/* ── ABOUT STRIP ── */
+.about-strip {
+  background: var(--paper-dark);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 5rem 2.5rem;
+}
+.about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: center; }
+.about-label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--celadon); }
+.about-title { font-size: 2.4rem; font-weight: 300; line-height: 1.2; margin: 1rem 0 1.5rem; }
+.about-title em { font-style: italic; color: var(--accent); }
+.about-body { font-size: 1rem; color: var(--ink-light); line-height: 1.9; max-width: 560px; }
+.about-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+.stat-item { border-left: 2px solid var(--celadon); padding-left: 1.2rem; }
+.stat-num { font-size: 2rem; font-weight: 300; color: var(--ink); line-height: 1; }
+.stat-desc { font-size: 0.75rem; color: var(--ink-light); letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+/* ── SHIPPING ── */
+.shipping-wrap {
+  background: var(--paper);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.shipping-wrap .section { padding-top: 5rem; padding-bottom: 5rem; }
+.shipping-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3.5rem; }
+
+.form-group { margin-bottom: 1.4rem; }
+.form-group label {
+  display: block; font-size: 0.62rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem;
+}
+.form-group select, .form-group input {
+  width: 100%; padding: 0.8rem 1.1rem;
+  background: var(--paper-dark); border: 1px solid var(--border);
+  font-family: inherit; font-size: 0.95rem; color: var(--ink);
+  outline: none; transition: border-color 0.2s; appearance: none;
+}
+.form-group select:focus, .form-group input:focus { border-color: var(--accent); background: var(--paper); }
+.select-wrap { position: relative; }
+.select-wrap::after { content: '▾'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--ink-light); font-size: 0.7rem; }
+.zone-pill {
+  display: inline-block; margin-bottom: 1.4rem;
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  background: var(--celadon-light); color: #3a6b5f;
+  padding: 0.35rem 1rem;
+}
+
+.shipping-result {
+  border: 1px solid var(--border); background: var(--paper-dark);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.35s, transform 0.35s; pointer-events: none;
+}
+.shipping-result.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+.res-header {
+  padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border);
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-light);
+}
+.res-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.75rem 1.5rem; border-bottom: 1px dashed var(--border);
+  font-size: 0.92rem;
+}
+.res-row:last-of-type { border-bottom: none; }
+.res-row .lbl { color: var(--ink-light); font-size: 0.78rem; }
+.res-row .val { color: var(--ink); font-weight: 400; }
+.res-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1.2rem 1.5rem; background: var(--ink); margin-top: 0;
+}
+.res-total .lbl { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,240,232,0.6); }
+.res-total .val { font-size: 1.6rem; color: var(--gold-light); }
+.res-note {
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem; color: var(--ink-light); line-height: 1.7;
+  border-top: 1px solid var(--border);
+  background: var(--paper);
+}
+
+/* ── CART ── */
+.cart-wrap { background: var(--paper-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.cart-box { border: 1px solid var(--border); background: var(--paper); }
+.cart-empty { padding: 4rem; text-align: center; font-style: italic; color: var(--ink-light); font-size: 1.05rem; }
+.cart-item {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.3rem 1.6rem; border-bottom: 1px solid var(--border);
+}
+.cart-item:last-of-type { border-bottom: none; }
+.cart-sym {
+  width: 58px; height: 58px; background: var(--paper-dark);
+  border: 1px solid var(--border); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif; font-size: 1.9rem; color: rgba(26,23,20,0.25);
+}
+.cart-info { flex: 1; }
+.cart-name { font-size: 1rem; font-weight: 400; }
+.cart-qty-ctrl { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem; }
+.qty-btn {
+  width: 24px; height: 24px; border: 1px solid var(--border);
+  background: none; cursor: pointer; font-size: 0.9rem; font-family: inherit;
+  color: var(--ink-light); display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.qty-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.qty-num { font-size: 0.9rem; min-width: 22px; text-align: center; }
+.cart-price { font-size: 1.05rem; color: var(--accent); white-space: nowrap; }
+.cart-rm { background: none; border: none; cursor: pointer; font-size: 0.9rem; color: #ccc; transition: color 0.2s; padding: 4px; font-family: inherit; }
+.cart-rm:hover { color: var(--accent); }
+.cart-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 1.6rem; background: var(--paper-dark);
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap; gap: 1rem;
+}
+.cart-total-lbl { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); }
+.cart-total-val { font-size: 1.7rem; color: var(--ink); margin-top: 0.1rem; }
+
+/* ── HOW IT WORKS ── */
+.how-wrap { background: var(--paper); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.step { text-align: center; padding: 0 1rem; }
+.step-num {
+  width: 48px; height: 48px; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; font-weight: 300; margin: 0 auto 1.2rem; color: var(--ink-light);
+}
+.step-title { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.82rem; color: var(--ink-light); line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: rgba(245,240,232,0.7);
+  padding: 4rem 2.5rem 3rem;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+.footer-logo { font-size: 1.3rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--paper); margin-bottom: 0.75rem; }
+.footer-logo span { color: var(--accent); font-style: italic; }
+.footer-desc { font-size: 0.82rem; line-height: 1.8; max-width: 280px; }
+.footer-col-title { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { font-size: 0.82rem; margin-bottom: 0.5rem; }
+.footer-col ul li a { color: rgba(245,240,232,0.6); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--paper); }
+.footer-bottom {
+  max-width: 1200px; margin: 3rem auto 0;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; color: rgba(245,240,232,0.35); flex-wrap: wrap; gap: 0.5rem;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: var(--paper);
+  padding: 0.8rem 2rem; font-size: 0.78rem; letter-spacing: 0.1em;
+  opacity: 0; transition: all 0.3s; pointer-events: none; z-index: 9999;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; padding: 3rem 1.5rem; gap: 2.5rem; }
+  .hero-visual { aspect-ratio: 16/9; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .shipping-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .nav { padding: 0 1.5rem; }
+  .nav-links { gap: 1.2rem; }
+}
+@media (max-width: 600px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2.4rem; }
+  .section { padding: 3.5rem 1.5rem; }
+  .shipping-wrap .section { padding: 3.5rem 1.5rem; }
+  .about-strip { padding: 3.5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Peace<span>Layer</span></a>
+  <ul class="nav-links">
+    <li><a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop</a></li>
+    <li><a onclick="document.getElementById('shipping').scrollIntoView({behavior:'smooth'})">Shipping</a></li>
+    <li><a onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">Cart <span class="nav-cart-badge" id="cart-count">0</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Seoul, Korea · 성수동</div>
+    <h1 class="hero-title">Carry a piece<br>of <em>Korea</em><br>with you</h1>
+    <p class="hero-desc">Curated gifts rooted in Korean beauty and everyday life — handpicked from the heart of Seongsu-dong. Shipped worldwide via Korea Post EMS.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Collection</button>
+      <button class="btn-outline" onclick="document.getElementById('shipping').scrollIntoView({behavior:'smooth'})">Shipping Info</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-celadon-bar"></div>
+    <div class="hero-bg-char">韓</div>
+    <div class="hero-tag-badge">Seongsu-dong, Seoul</div>
+    <div class="hero-ems-badge">
+      <span class="big">EMS</span>
+      <span class="small">Worldwide Shipping</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">Free tracking on all orders <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Handpicked in Seoul <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Korea Post EMS · 3–12 business days <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Authentic Korean gifts <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">성수동 직접 큐레이션 <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Free tracking on all orders <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Handpicked in Seoul <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Korea Post EMS · 3–12 business days <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Authentic Korean gifts <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">성수동 직접 큐레이션 <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products">
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title"><em>Select</em> Collection</h2>
+    <span class="section-sub">Handpicked · Made in Korea</span>
+  </div>
+  <div class="products-grid" id="product-grid"></div>
+</section>
+</div>
+
+<!-- ABOUT -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-num">성수</div>
+        <div class="stat-desc">Seongsu-dong, Seoul — our home</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">36+</div>
+        <div class="stat-desc">Countries shipped to via EMS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-desc">Authentic, made-in-Korea goods</div>
+      </div>
+    </div>
+    <div>
+      <div class="about-label">Our Story</div>
+      <h2 class="about-title">A shop born from<br><em>love of Korea</em></h2>
+      <p class="about-body">Peace Layer started as a small corner of Seongsu-dong where travelers could find something genuinely Korean to bring home. Every item is chosen with care — for its craft, its story, and the quiet way it carries a piece of this city with it. We ship directly from Seoul so your gift arrives exactly as it left us.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-wrap">
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title"><em>How</em> to Order</h2>
+    <span class="section-sub">Simple · Worldwide</span>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Browse & Add</div>
+      <div class="step-desc">Choose your items and add them to the cart above.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Check Shipping</div>
+      <div class="step-desc">Use our EMS calculator to see your exact shipping cost.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">DM or Email Us</div>
+      <div class="step-desc">Send us your order via Instagram DM or email. We'll confirm availability.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Pay & Receive</div>
+      <div class="step-desc">Pay via PayPal or Wise. We ship within 2 business days with full tracking.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- SHIPPING CALCULATOR -->
+<div class="shipping-wrap" id="shipping">
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title"><em>Shipping</em> Calculator</h2>
+    <span class="section-sub">우체국 EMS 기준</span>
+  </div>
+  <div class="shipping-grid">
+    <div>
+      <div class="form-group">
+        <label>Destination Country</label>
+        <div class="select-wrap">
+          <select id="dest-country" onchange="updateZone()">
+            <option value="">— Select Country —</option>
+            <option value="US|1">United States</option>
+            <option value="CA|1">Canada</option>
+            <option value="GB|1">United Kingdom</option>
+            <option value="AU|1">Australia</option>
+            <option value="NZ|1">New Zealand</option>
+            <option value="JP|2">Japan</option>
+            <option value="CN|2">China</option>
+            <option value="TW|2">Taiwan</option>
+            <option value="HK|2">Hong Kong</option>
+            <option value="SG|2">Singapore</option>
+            <option value="TH|2">Thailand</option>
+            <option value="VN|2">Vietnam</option>
+            <option value="PH|2">Philippines</option>
+            <option value="MY|2">Malaysia</option>
+            <option value="ID|2">Indonesia</option>
+            <option value="IN|3">India</option>
+            <option value="DE|3">Germany</option>
+            <option value="FR|3">France</option>
+            <option value="IT|3">Italy</option>
+            <option value="ES|3">Spain</option>
+            <option value="NL|3">Netherlands</option>
+            <option value="BE|3">Belgium</option>
+            <option value="CH|3">Switzerland</option>
+            <option value="SE|3">Sweden</option>
+            <option value="NO|3">Norway</option>
+            <option value="DK|3">Denmark</option>
+            <option value="FI|3">Finland</option>
+            <option value="PL|3">Poland</option>
+            <option value="PT|3">Portugal</option>
+            <option value="AT|3">Austria</option>
+            <option value="MX|4">Mexico</option>
+            <option value="BR|4">Brazil</option>
+            <option value="AR|4">Argentina</option>
+            <option value="CL|4">Chile</option>
+            <option value="ZA|4">South Africa</option>
+            <option value="EG|4">Egypt</option>
+            <option value="NG|4">Nigeria</option>
+            <option value="AE|4">UAE</option>
+            <option value="SA|4">Saudi Arabia</option>
+            <option value="TR|4">Turkey</option>
+            <option value="RU|4">Russia</option>
+          </select>
+        </div>
+      </div>
+      <div id="zone-display" style="display:none; margin-bottom:1.4rem;">
+        <span class="zone-pill" id="zone-label"></span>
+      </div>
+      <div class="form-group">
+        <label>Estimated Weight (grams)</label>
+        <input type="number" id="weight-input" placeholder="e.g. 500" min="1" max="30000">
+      </div>
+      <button class="btn-primary" style="width:100%;" onclick="calculateShipping()">Calculate Shipping Cost</button>
+    </div>
+    <div>
+      <div class="shipping-result" id="shipping-result">
+        <div class="res-header">Shipping Estimate</div>
+        <div class="res-row"><span class="lbl">Destination</span><span class="val" id="res-country">—</span></div>
+        <div class="res-row"><span class="lbl">Weight</span><span class="val" id="res-weight">—</span></div>
+        <div class="res-row"><span class="lbl">EMS Zone</span><span class="val" id="res-zone">—</span></div>
+        <div class="res-row"><span class="lbl">Est. Delivery</span><span class="val" id="res-days">—</span></div>
+        <div class="res-total"><span class="lbl">Shipping Fee</span><span class="val" id="res-fee">—</span></div>
+        <div class="res-note" id="res-note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CART -->
+<div class="cart-wrap">
+<section class="section" id="cart">
+  <div class="section-header">
+    <h2 class="section-title"><em>Your</em> Cart</h2>
+    <span class="section-sub" id="cart-subtitle">0 items</span>
+  </div>
+  <div class="cart-box" id="cart-box">
+    <div class="cart-empty" id="cart-empty">Your cart is empty — explore the collection above.</div>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Peace<span>Layer</span></div>
+      <p class="footer-desc">Korean travel gifts curated in Seongsu-dong, Seoul. Every piece carries the quiet warmth of this city.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <ul>
+        <li><a href="https://instagram.com/peacelayer" target="_blank">@peacelayer</a></li>
+        <li><a href="mailto:hello@piecelayer.com">hello@piecelayer.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Info</div>
+      <ul>
+        <li><a onclick="document.getElementById('shipping').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">Shipping Policy</a></li>
+        <li><a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">Shop All</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Peace Layer · Seoul, Korea</span>
+    <span>성수동 2가 · Ships via Korea Post EMS</span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  { id:1, sym:'扇', cat:'Accessory', name:'Hanji Fan — 한지 부채', price:18000, weightG:120, desc:'Hand-crafted mulberry paper fan' },
+  { id:2, sym:'壺', cat:'Ceramics', name:'Mini Celadon Vase', price:32000, weightG:280, desc:'Celadon glazed porcelain' },
+  { id:3, sym:'香', cat:'Wellness', name:'Hanji Fragrance Sachet', price:12000, weightG:80, desc:'Traditional paper-wrapped scent' },
+  { id:4, sym:'紋', cat:'Stationery', name:'Munjado Postcard Set', price:8000, weightG:60, desc:'Set of 6 illustrated postcards' },
+  { id:5, sym:'布', cat:'Textile', name:'Pojagi Wrap Cloth', price:24000, weightG:200, desc:'Traditional patchwork wrapping cloth' },
+  { id:6, sym:'茶', cat:'Tea & Food', name:'Korean Tea Trio Gift Set', price:28000, weightG:350, desc:'Three varieties of Korean tea' },
+];
+
+const cart = {};
+
+const emsRates = {
+  1:{ name:'Zone 1 · Americas & Oceania', days:'5–7 business days', rates:[[300,22000],[500,25000],[750,28000],[1000,32000],[1500,38000],[2000,44000],[2500,50000],[3000,56000],[4000,64000],[5000,72000],[7000,85000],[10000,102000],[15000,130000],[20000,158000],[30000,205000]] },
+  2:{ name:'Zone 2 · Asia Pacific', days:'3–5 business days', rates:[[300,11000],[500,13000],[750,15000],[1000,17000],[1500,20000],[2000,23000],[2500,26000],[3000,29000],[4000,33000],[5000,38000],[7000,46000],[10000,57000],[15000,73000],[20000,90000],[30000,118000]] },
+  3:{ name:'Zone 3 · Europe & India', days:'6–9 business days', rates:[[300,19000],[500,22000],[750,25000],[1000,28000],[1500,33000],[2000,38000],[2500,43000],[3000,48000],[4000,56000],[5000,64000],[7000,78000],[10000,97000],[15000,124000],[20000,152000],[30000,196000]] },
+  4:{ name:'Zone 4 · Middle East, Africa & Others', days:'7–12 business days', rates:[[300,21000],[500,24000],[750,27000],[1000,30000],[1500,36000],[2000,42000],[2500,48000],[3000,54000],[4000,62000],[5000,70000],[7000,83000],[10000,100000],[15000,128000],[20000,155000],[30000,200000]] },
+};
+
+let currentZone = null, currentCountryName = '';
+
+function renderProducts() {
+  document.getElementById('product-grid').innerHTML = products.map(p => `
+    <div class="product-card">
+      <div class="product-thumb">
+        <span class="han-char">${p.sym}</span>
+        <span class="product-thumb-tag">${p.cat}</span>
+      </div>
+      <div class="product-category">${p.cat}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-price"><strong>₩${p.price.toLocaleString()}</strong> <span>· ~$${Math.round(p.price/1350)}</span></div>
+      <button class="add-btn" id="addbtn-${p.id}" onclick="addToCart(${p.id})">Add to Cart</button>
+    </div>
+  `).join('');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+  showToast('Added to cart');
+}
+
+function changeQty(id, d) {
+  cart[id] = (cart[id] || 0) + d;
+  if (cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderCart();
+}
+
+function renderCart() {
+  const keys = Object.keys(cart).filter(k => cart[k] > 0);
+  const totalQty = keys.reduce((s,k) => s+cart[k], 0);
+  document.getElementById('cart-count').textContent = totalQty;
+  document.getElementById('cart-subtitle').textContent = totalQty + (totalQty === 1 ? ' item' : ' items');
+
+  const box = document.getElementById('cart-box');
+  if (keys.length === 0) {
+    box.innerHTML = '<div class="cart-empty">Your cart is empty — explore the collection above.</div>';
+    return;
+  }
+  let total = 0;
+  const rows = keys.map(k => {
+    const p = products.find(x => x.id == k);
+    const sub = p.price * cart[k];
+    total += sub;
+    return `<div class="cart-item">
+      <div class="cart-sym">${p.sym}</div>
+      <div class="cart-info">
+        <div class="cart-name">${p.name}</div>
+        <div class="cart-qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(${k},-1)">−</button>
+          <span class="qty-num">${cart[k]}</span>
+          <button class="qty-btn" onclick="changeQty(${k},1)">+</button>
+        </div>
+      </div>
+      <div class="cart-price">₩${sub.toLocaleString()}</div>
+      <button class="cart-rm" onclick="removeFromCart(${k})">✕</button>
+    </div>`;
+  }).join('');
+
+  box.innerHTML = rows + `
+    <div class="cart-foot">
+      <div>
+        <div class="cart-total-lbl">Subtotal (KRW)</div>
+        <div class="cart-total-val">₩${total.toLocaleString()}</div>
+      </div>
+      <button class="btn-primary" onclick="proceedCheckout()">Proceed to Order →</button>
+    </div>`;
+}
+
+function updateZone() {
+  const sel = document.getElementById('dest-country');
+  const val = sel.value;
+  const zd = document.getElementById('zone-display');
+  if (!val) { zd.style.display='none'; currentZone=null; return; }
+  const [,z] = val.split('|');
+  currentZone = parseInt(z);
+  currentCountryName = sel.options[sel.selectedIndex].text;
+  document.getElementById('zone-label').textContent = emsRates[currentZone].name;
+  zd.style.display = 'block';
+}
+
+function getFee(zone, g) {
+  for (const [max, fee] of emsRates[zone].rates) {
+    if (g <= max) return fee;
+  }
+  return emsRates[zone].rates.at(-1)[1];
+}
+
+function calculateShipping() {
+  if (!currentZone) { alert('Please select a destination country.'); return; }
+  const w = parseInt(document.getElementById('weight-input').value);
+  if (!w || w < 1) { alert('Please enter a valid weight in grams (e.g. 500).'); return; }
+  if (w > 30000) { alert('EMS maximum is 30kg. Please contact us for large orders.'); return; }
+  const fee = getFee(currentZone, w);
+  const z = emsRates[currentZone];
+  document.getElementById('res-country').textContent = currentCountryName;
+  document.getElementById('res-weight').textContent = w >= 1000 ? (w/1000).toFixed(2)+'kg' : w+'g';
+  document.getElementById('res-zone').textContent = 'Zone ' + currentZone;
+  document.getElementById('res-days').textContent = z.days;
+  document.getElementById('res-fee').textContent = '₩'+fee.toLocaleString()+' (~$'+Math.round(fee/1350)+')';
+  document.getElementById('res-note').textContent = '※ Based on Korea Post EMS standard tariff. Packaging weight (~100–200g) not included. Customs duties at destination are the buyer\'s responsibility. Tracking number provided for all shipments.';
+  document.getElementById('shipping-result').classList.add('show');
+}
+
+function proceedCheckout() {
+  const keys = Object.keys(cart).filter(k => cart[k] > 0);
+  if (keys.length === 0) return;
+  let orderText = 'Hi! I\'d like to order from Peace Layer:\n\n';
+  keys.forEach(k => {
+    const p = products.find(x => x.id == k);
+    orderText += `• ${p.name} × ${cart[k]} = ₩${(p.price*cart[k]).toLocaleString()}\n`;
+  });
+  const total = keys.reduce((s,k) => s + products.find(x=>x.id==k).price*cart[k], 0);
+  orderText += `\nTotal: ₩${total.toLocaleString()}\n\nShipping to: [your country]\nAddress: [your address]`;
+  window.open('https://instagram.com/peacelayer', '_blank');
+  alert('Order summary copied — please send this via Instagram DM:\n\n' + orderText);
+}
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
